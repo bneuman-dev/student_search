@@ -1,0 +1,29 @@
+<div class="row title title-border">
+  Course record for {{ studentDetails.student.first_name }} {{ studentDetails.student.last_name }} ({{ studentDetails.student.email }})
+</div>
+
+<div ng-if="!studentDetails.noCoursesTaken()" class="row">  
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row" id="student-details-gpa">
+      Cumulative GPA: {{ studentDetails.student.gpa }}
+    </div> 
+
+    <div class="row table-header">
+      <div class="col-md-6">Class Name</div>
+      <div class="col-md-6">Class Grade</div>
+    </div>
+
+    <div class="table-body">
+      <div class="row table-row" ng-repeat="class in studentDetails.student.courses">
+        <div class="col-md-6">{{ class.name }}</div>
+        <div class="col-md-6">{{ class.grade }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="studentDetails.noCoursesTaken()">
+  <div class="row no-results">
+    {{ studentDetails.messages.noCoursesTaken }}
+  </div>
+</div>

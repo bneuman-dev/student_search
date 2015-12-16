@@ -1,0 +1,33 @@
+<div class="row">
+  <!-- <input id="search-field" class="col-md-4" placeholder="Name" ng-model="search.searchParams.name" type="text" /> -->
+  <input id="search-field" class="col-md-4" placeholder="First Name" ng-model="search.searchParams.first_name" type="text" />
+  <input id="search-field" class="col-md-4" placeholder="Last Name" ng-model="search.searchParams.last_name" type="text" />
+  <button ui-sref="search(search.searchParams)">{{ search.messages.searchActionText }}</button>
+</div>
+
+<div id="result-summary" ng-if="!search.isEmptySearchResult()">
+  <div class="row table-header" >
+    <div class="col-md-3">First name</div>
+    <div class="col-md-3">Last name</div>
+    <div class="col-md-2">GPA</div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="table-body">
+    <div ng-repeat="student in search.searchResult.students" class="row table-row"> 
+      <div class="col-md-3">{{ student.first_name }}</div> 
+      <div class="col-md-3">{{ student.last_name }}</div> 
+      <div class="col-md-2">{{ search.getGPA(student) }}</div>
+      <div class="col-md-4"><a href="#" ui-sref="student({id: student.id})">Get details</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="row no-results" ng-if="search.isEmptySearchResult() && !search.isNewSearch()">
+  {{ search.messages.noSearchResults }}
+</div>
+
+<div class="row instructions" ng-if="search.isNewSearch()">
+  {{ search.messages.searchInstructions }}
+</div>
+
