@@ -1,4 +1,4 @@
-module StudentAPI
+amodule StudentAPI
   class API < Grape::API
     format :json
 
