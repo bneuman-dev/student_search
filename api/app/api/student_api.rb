@@ -1,2 +1,2 @@
-module StudentAPI
+amodule StudentAPI
 end
